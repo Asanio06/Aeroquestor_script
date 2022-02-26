@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+    container_name: "aeroquestor-script"
+
+    env_file:
+      - .env
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /app/logs
+
+    networks:
+      - db_net
+
+networks:
+  db_net:
